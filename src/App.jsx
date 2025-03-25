@@ -9,6 +9,13 @@ function App() {
 	const deleteCity = idToDelete => {
 		setCities(cities.filter(city => city.id !== idToDelete))
 	}
+	const editCity = (idToEdit, name, population) => {
+		setCities(cities.map(city => (
+			city.id === idToEdit ? (
+				{ ...city, cityName: name, population: population }
+			) : city
+		)))
+	}
 	
 	return (
 		<div className="app">
@@ -20,6 +27,7 @@ function App() {
 				<CityList
 					cities={cities}
 					deleteCity={deleteCity}
+					editCity={editCity}
 					/>
 
 			</main>
